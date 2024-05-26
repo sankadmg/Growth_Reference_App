@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import {SafeAreaView} from 'react-native';
 
-import SwitchGender from './src/components/SwitchGender';
-import FormData from './src/components/FormData';
-
-import Results from './src/components/Results';
-import Header from './src/components/Header';
-import Footer from './src/components/Footer';
-import RowData from './src/components/RowData';
+import {
+  Header,
+  SwitchGender,
+  FormData,
+  RowData,
+  Results,
+  Footer,
+} from './src/components/index';
 
 export default function App() {
   const [student, setStudent] = useState({
@@ -36,7 +37,6 @@ export default function App() {
       weight: weight,
     });
   };
-
   return (
     <SafeAreaView className=" flex-1 items-center justify-between bg-custom-tealspecial ">
       <Header />

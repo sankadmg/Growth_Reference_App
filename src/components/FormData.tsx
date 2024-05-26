@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Button,
-  GestureResponderEvent,
-  Text,
-  TextInput,
-  View,
-} from 'react-native';
+import {GestureResponderEvent, Text, TextInput, View} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import Icon from './Icon';
@@ -72,7 +66,7 @@ export default function FormData({submitBMI, gender}: Props) {
               <Icon gender={gender} />
             </View>
             <View className=" w-64 ml-2">
-              <View className=" flex-row h-14 items-center">
+              <View className=" flex-row h-14 items-center space-x-1">
                 <TextInput
                   className=" text-center border-2 w-16 h-12 rounded-xl border-custom-mintcream"
                   placeholder="Age"
@@ -88,8 +82,7 @@ export default function FormData({submitBMI, gender}: Props) {
                   </Text>
                 ) : (
                   <Text className=" w-40 mr-2 text-[12px] text-white">
-                    Enter the age in the range of 5.1 to 19.1(Ex: 5 year & 1
-                    month - 5.1)
+                    {`Enter the age in the range\nof 5.1 to 19.1 (Ex : 5 year \n& 1 month - 5.1)`}
                   </Text>
                 )}
               </View>
