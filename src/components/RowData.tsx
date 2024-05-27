@@ -52,11 +52,13 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
         </View>
         <View className="flex-row top-2 space-x-1">
           <Text className="w-24 text-right text-xl text-slate-50">BMI :</Text>
-          <Text
-            className="w-16 text-center text-xl rounded-lg font-bold text-slate-50"
-            style={{backgroundColor: bmiBackgroundColor}}>
-            {hight > 0 && bmi.toFixed(1)}
-          </Text>
+          {bmi && (
+            <Text
+              className="w-16 text-center text-xl rounded-lg font-bold text-slate-50"
+              style={{backgroundColor: bmiBackgroundColor}}>
+              {hight > 0 && bmi.toFixed(1)}
+            </Text>
+          )}
         </View>
       </View>
       <Image source={icon} className="w-24 h-24 top-1 mr-2" />

@@ -85,7 +85,7 @@ export default function FormData({submitBMI, gender}: Props) {
                     {errors.age}
                   </Text>
                 ) : (
-                  <Text className=" w-40 mr-2 text-[12px] text-white">
+                  <Text className="w-40 mr-2 text-[12px] text-white">
                     {`Enter the age in the range\nof 5.1 to 19.1 (Ex : 5 year \n& 1 month - 5.1)`}
                   </Text>
                 )}
