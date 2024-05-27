@@ -17,7 +17,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
   return (
     <View className="flex-row top-2">
       <View className=" border-r mr-2 border-r-white">
-        <View className="flex-row gap-2">
+        <View className=" flex-row">
           <Text className="w-20 text-right text-xl text-slate-50">
             Months :
           </Text>
@@ -25,7 +25,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
             {months > 0 && months}
           </Text>
         </View>
-        <View className="flex-row gap-2">
+        <View className="flex-row">
           <Text className="w-20 text-right text-xl text-slate-50">
             Height :
           </Text>
@@ -33,7 +33,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
             {hight > 0 && hight + 'm'}
           </Text>
         </View>
-        <View className="flex-row gap-2">
+        <View className="flex-row">
           <Text className="w-20 text-right text-xl text-slate-50">
             Weight :
           </Text>
@@ -41,7 +41,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
             {weight > 0 && weight + 'Kg'}
           </Text>
         </View>
-        <View className="flex-row gap-2">
+        <View className="flex-row">
           <Text className="w-20 text-right text-xl text-slate-50">BMI :</Text>
           <Text className="w-20 text-left text-xl text-slate-50">
             {hight > 0 && bmi.toFixed(2)}
