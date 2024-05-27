@@ -9,7 +9,7 @@ export default function Icon({gender}: Props) {
     : require('../icons/girl.png');
   return (
     <View>
-      <Image source={icon} className=" w-28 h-24" />
+      <Image source={icon} className="w-28 h-24" />
     </View>
   );
 }

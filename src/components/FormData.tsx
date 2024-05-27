@@ -35,9 +35,13 @@ export default function FormData({submitBMI, gender}: Props) {
   });
 
   function calculateBMI(values: any) {
+    let numberOfMonths = 0;
     const arrayOfAge = values.age.split('.');
-    const numberOfMonths =
-      parseFloat(arrayOfAge[0]) * 12 + parseFloat(arrayOfAge[1]);
+    arrayOfAge[1]
+      ? (numberOfMonths =
+          parseFloat(arrayOfAge[0]) * 12 + parseFloat(arrayOfAge[1]))
+      : (numberOfMonths = parseFloat(arrayOfAge[0]) * 12);
+
     const valueOfBmi =
       parseFloat(values.weight) /
       parseFloat(values.height) /
@@ -130,7 +134,7 @@ export default function FormData({submitBMI, gender}: Props) {
           </View>
           <View className="h-12 -bottom-4  w-full items-center">
             <Text
-              className="text-xl text-center h-8 w-60 items-center text-custom-tealspecial bg-neutral-50 rounded-xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
+              className="text-xl text-center h-8 w-72 items-center text-custom-tealspecial bg-neutral-50 rounded-xl hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
               onPress={(e: GestureResponderEvent) => handleSubmit()}>
               Calculate
             </Text>

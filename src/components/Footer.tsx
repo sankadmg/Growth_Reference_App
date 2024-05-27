@@ -7,7 +7,7 @@ export default function Footer() {
     const email = 'sanka.dmg@gmail.com';
     Alert.alert(
       'Growth Reference App | V 1.0.0',
-      `Developer: Dileep Madusanka \nDesignation: Public Health Inspector \nemail: ${email}  \ncontact: ${mobileNumber}`,
+      `Developer: Dileepa Madusanka \nDesignation: Public Health Inspector \nemail: ${email}  \ncontact: ${mobileNumber}`,
       [
         {
           text: 'Ok',

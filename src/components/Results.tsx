@@ -23,7 +23,7 @@ export default function Results({gender, month, bmi, hight}: Props) {
         <Text className="text-xl text-slate-50">BMI :</Text>
         {bmi > 0 ? (
           <Text
-            className="w-28 text-xl rounded text-center text-slate-50"
+            className="w-28 text-xl rounded-lg text-center text-slate-50"
             style={{backgroundColor: color.colorOfBMI}}>
             {gender
               ? boy.nutritionalStatusForBoys
@@ -37,7 +37,7 @@ export default function Results({gender, month, bmi, hight}: Props) {
         <Text className="text-xl text-slate-50">Height :</Text>
         {bmi > 0 ? (
           <Text
-            className="w-28 text-xl rounded text-center text-slate-50"
+            className="w-28 text-xl rounded-lg text-center text-slate-50"
             style={{backgroundColor: color.colorOfHight}}>
             {gender ? boy.hightStatusForBoys : girl.hightStatusForGirls}
           </Text>
