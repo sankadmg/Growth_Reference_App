@@ -112,7 +112,7 @@ export default function FormData({submitBMI, gender}: Props) {
               </View>
               <View className=" flex-row h-14  items-center space-x-1">
                 <TextInput
-                  className=" text-center border-2 w-16 h-12 rounded-xl border-custom-mintcream"
+                  className=" text-center text-white border-2 w-16 h-12 rounded-xl border-custom-mintcream"
                   placeholder="Weight"
                   placeholderTextColor="gray"
                   keyboardType="number-pad"

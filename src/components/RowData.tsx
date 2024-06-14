@@ -30,7 +30,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
       <View className="pb-2 border-r mr-2 border-r-white">
         <View className=" flex-row space-x-1">
           <Text className="w-24 text-right text-xl text-slate-50">Age :</Text>
-          <Text className="w-24 text-left text-xl text-slate-50">
+          <Text className="w-28 text-left text-xl text-slate-50">
             {months > 0 && age}
           </Text>
         </View>
@@ -38,7 +38,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
           <Text className="w-24 text-right text-xl text-slate-50">
             Height :
           </Text>
-          <Text className="w-24 text-left text-xl text-slate-50">
+          <Text className="w-28 text-left text-xl text-slate-50">
             {hight > 0 && hight + 'cm'}
           </Text>
         </View>
@@ -46,7 +46,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
           <Text className=" w-24 text-right text-xl text-slate-50">
             Weight :
           </Text>
-          <Text className="w-24 text-left text-xl text-slate-50">
+          <Text className="w-28 text-left text-xl text-slate-50">
             {weight > 0 && weight + 'Kg'}
           </Text>
         </View>
