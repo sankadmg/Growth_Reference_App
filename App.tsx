@@ -9,6 +9,7 @@ import {
   Results,
   Footer,
 } from './src/components/index';
+import Chart from './src/components/Chart';
 
 export default function App() {
   const [student, setStudent] = useState({
@@ -55,6 +56,7 @@ export default function App() {
         bmi={student.bmi}
         hight={student.hight}
       />
+      {/* <Chart /> */}
       <Footer />
     </SafeAreaView>
   );
