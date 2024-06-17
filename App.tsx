@@ -10,6 +10,7 @@ import {
   Footer,
 } from './src/components/index';
 import Chart from './src/components/Chart';
+import {NavigationContainer} from '@react-navigation/native';
 
 export default function App() {
   const [student, setStudent] = useState({
@@ -39,25 +40,26 @@ export default function App() {
     });
   };
   return (
-    <SafeAreaView className=" flex-1 items-center justify-between bg-custom-tealspecial ">
-      <Header />
-      <SwitchGender onSwitch={handleSwitchState} />
-      <FormData submitBMI={handleBMIChange} gender={student.state} />
-      <RowData
-        gender={student.state}
-        months={student.months}
-        bmi={student.bmi}
-        hight={student.hight}
-        weight={student.weight}
-      />
-      <Results
-        gender={student.state}
-        month={student.months}
-        bmi={student.bmi}
-        hight={student.hight}
-      />
-      {/* <Chart /> */}
-      <Footer />
-    </SafeAreaView>
+    <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>
+    // <SafeAreaView className=" flex-1 items-center justify-between bg-custom-tealspecial ">
+    //   <Header />
+    //   <SwitchGender onSwitch={handleSwitchState} />
+    //   <FormData submitBMI={handleBMIChange} gender={student.state} />
+    //   <RowData
+    //     gender={student.state}
+    //     months={student.months}
+    //     bmi={student.bmi}
+    //     hight={student.hight}
+    //     weight={student.weight}
+    //   />
+    //   <Results
+    //     gender={student.state}
+    //     month={student.months}
+    //     bmi={student.bmi}
+    //     hight={student.hight}
+    //   />
+    //   {/* <Chart /> */}
+    //   <Footer />
+    // </SafeAreaView>
   );
 }
