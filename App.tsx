@@ -9,8 +9,10 @@ import {
   Results,
   Footer,
 } from './src/components/index';
-import Chart from './src/components/Chart';
+
 import {NavigationContainer} from '@react-navigation/native';
+
+import MyTab from './Navigations/MyTab';
 
 export default function App() {
   const [student, setStudent] = useState({
@@ -40,7 +42,9 @@ export default function App() {
     });
   };
   return (
-    <NavigationContainer>{/* Rest of your app code */}</NavigationContainer>
+    <NavigationContainer>
+      <MyTab />
+    </NavigationContainer>
     // <SafeAreaView className=" flex-1 items-center justify-between bg-custom-tealspecial ">
     //   <Header />
     //   <SwitchGender onSwitch={handleSwitchState} />

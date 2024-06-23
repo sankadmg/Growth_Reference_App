@@ -21,7 +21,7 @@ export default function Footer() {
     );
   };
   return (
-    <View className=" flex-row bg-blue-950 h-20 w-full justify-center items-center space-x-2">
+    <View className=" flex-row bg-blue-950 h-14 w-full fix justify-center items-center space-x-2">
       <TouchableOpacity onPress={handleOnPress}>
         <View className=" w-16 bg-neutral-50 text-xl rounded-xl items-center">
           <Text className="-top-0.5 text-blue-950 font-bold text-xl text-center">
