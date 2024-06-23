@@ -1,15 +1,13 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
+import {RootState} from '../../Redux_Store/store';
+import {useSelector} from 'react-redux';
 
-interface Props {
-  gender: boolean;
-  months: number;
-  bmi: number;
-  hight: number;
-  weight: number;
-}
+export default function RowData() {
+  const {gender, months, bmi, height, weight} = useSelector(
+    (state: RootState) => state.user,
+  );
 
-export default function RowData({gender, months, bmi, hight, weight}: Props) {
   const icon = gender
     ? require('../icons/chart_boy.png')
     : require('../icons/chart_girl.png');
@@ -39,7 +37,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
             Height :
           </Text>
           <Text className="w-28 text-left text-xl text-slate-50">
-            {hight > 0 && hight + 'cm'}
+            {height > 0 && height + 'cm'}
           </Text>
         </View>
         <View className="flex-row space-x-1">
@@ -56,7 +54,7 @@ export default function RowData({gender, months, bmi, hight, weight}: Props) {
             <Text
               className="w-16 text-center text-xl rounded-lg font-bold text-slate-50"
               style={{backgroundColor: bmiBackgroundColor}}>
-              {hight > 0 && bmi.toFixed(1)}
+              {height > 0 && bmi.toFixed(1)}
             </Text>
           )}
         </View>

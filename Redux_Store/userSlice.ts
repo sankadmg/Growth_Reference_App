@@ -2,16 +2,18 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 interface UserState {
   gender: boolean;
-  age: number;
+  months: number;
   bmi: number;
   height: number;
+  weight: number;
 }
 
 const initialState: UserState = {
   gender: false, // Assuming false for female, true for male
-  age: 0,
+  months: 0,
   bmi: 0,
   height: 0,
+  weight: 0,
 };
 
 const userSlice = createSlice({
@@ -21,8 +23,8 @@ const userSlice = createSlice({
     setGender(state, action: PayloadAction<boolean>) {
       state.gender = action.payload;
     },
-    setAge(state, action: PayloadAction<number>) {
-      state.age = action.payload;
+    setMonths(state, action: PayloadAction<number>) {
+      state.months = action.payload;
     },
     setBMI(state, action: PayloadAction<number>) {
       state.bmi = action.payload;
@@ -30,8 +32,12 @@ const userSlice = createSlice({
     setHeight(state, action: PayloadAction<number>) {
       state.height = action.payload;
     },
+    setWeight(state, action: PayloadAction<number>) {
+      state.weight = action.payload;
+    },
   },
 });
 
-export const {setGender, setAge, setBMI, setHeight} = userSlice.actions;
+export const {setGender, setMonths, setBMI, setHeight, setWeight} =
+  userSlice.actions;
 export default userSlice.reducer;

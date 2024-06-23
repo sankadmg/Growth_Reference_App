@@ -1,5 +1,5 @@
 import {Dimensions, Text, View} from 'react-native';
-import React, {useContext} from 'react';
+import React from 'react';
 
 import {
   VictoryArea,
@@ -11,25 +11,23 @@ import {
 } from 'victory-native';
 import {useSelector} from 'react-redux';
 import {RootState} from '../Redux_Store/store';
-// import {DataContext} from './MyTab';
-
-//const {height, width} = Dimensions.get('window');
-
-// interface Props {
-//   gender: boolean;
-// }
 
 export default function Chart() {
-  const {gender, age, bmi, height} = useSelector(
+  const {gender, months, bmi, height} = useSelector(
     (state: RootState) => state.user,
   );
-  // const context = useContext(DataContext);
-  // const {name, setName} = context!;
+
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+    <View
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgb(23, 68, 84)',
+      }}>
       <Text>Gender: {gender ? 'Male' : 'Female'}</Text>
-      <Text>Age: {age}</Text>
-      <Text>BMI: {bmi}</Text>
+      <Text>Months: {months}</Text>
+      <Text>BMI: {bmi.toFixed(2)}</Text>
       <Text>Height: {height}</Text>
     </View>
   );

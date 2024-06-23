@@ -3,18 +3,32 @@ import {GestureResponderEvent, Text, TextInput, View} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import Icon from './Icon';
+import {useDispatch, useSelector} from 'react-redux';
+import {RootState} from '../../Redux_Store/store';
+import {
+  setMonths,
+  setBMI,
+  setGender,
+  setHeight,
+  setWeight,
+} from '../../Redux_Store/userSlice';
 
-interface Props {
-  gender: boolean;
-  submitBMI: (
-    bmi: number,
-    hight: number,
-    weight: number,
-    months: number,
-  ) => void;
-}
+// interface Props {
+//   gender: boolean;
+//   submitBMI: (
+//     bmi: number,
+//     hight: number,
+//     weight: number,
+//     months: number,
+//   ) => void;
+// }
+// {submitBMI, gender}: Props
 
-export default function FormData({submitBMI, gender}: Props) {
+export default function FormData() {
+  const dispatch = useDispatch();
+  const {gender, months, bmi, height, weight} = useSelector(
+    (state: RootState) => state.user,
+  );
   const initialValues = {
     age: '',
     height: '',
@@ -54,7 +68,17 @@ export default function FormData({submitBMI, gender}: Props) {
       numberOfMonths,
     );
   }
-
+  function submitBMI(
+    bmi: number,
+    height: number,
+    weight: number,
+    months: number,
+  ) {
+    dispatch(setMonths(months));
+    dispatch(setBMI(bmi));
+    dispatch(setHeight(height));
+    dispatch(setWeight(weight));
+  }
   return (
     <Formik
       initialValues={initialValues}

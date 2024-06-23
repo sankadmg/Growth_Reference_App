@@ -1,30 +1,17 @@
-import {View, Text} from 'react-native';
-import React, {createContext, Dispatch, SetStateAction, useState} from 'react';
+import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {About, Chart, Home} from './index';
 
-import Bbmi from '../src/json/Bbmi.json';
 import {Provider} from 'react-redux';
 import store from '../Redux_Store/store';
-
-// type setName = (value: string) => void;
-
-// interface contextProps {
-//   name: string;
-//   setName: setName;
-// }
-
-//export const DataContext = createContext<contextProps | undefined>(undefined);
+import {AccessibilityInfo} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
 export default function MyTab() {
-  //const [name, setName] = useState<string>('user name');
-
   return (
-    //<DataContext.Provider value={{name, setName}}>
     <Provider store={store}>
       <Tab.Navigator
         initialRouteName="Home"
@@ -32,10 +19,17 @@ export default function MyTab() {
           tabBarActiveTintColor: '#e91e63',
         }}>
         <Tab.Screen
-          name="Home"
+          name="BMI & Height Status For Age (5 -19)"
           component={Home}
           options={{
+            headerStyle: {
+              backgroundColor: 'rgb(23, 37, 84)',
+            },
+            headerTintColor: 'white',
+            headerTitleAlign: 'center',
+            tabBarActiveTintColor: 'rgb(255,255,255)',
             tabBarLabel: 'Home',
+            tabBarStyle: {backgroundColor: 'rgb(23, 37, 84)'},
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons name="home" color={color} size={size} />
             ),
@@ -45,7 +39,14 @@ export default function MyTab() {
           name="Chart"
           component={Chart}
           options={{
+            headerStyle: {
+              backgroundColor: 'rgb(23, 37, 84)',
+            },
+            headerTintColor: 'white',
+            headerTitleAlign: 'center',
+            tabBarActiveTintColor: 'rgb(255,255,255)',
             tabBarLabel: 'Chart',
+            tabBarStyle: {backgroundColor: 'rgb(23, 37, 84)'},
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons
                 name="chart-timeline-variant-shimmer"
@@ -59,7 +60,14 @@ export default function MyTab() {
           name="About"
           component={About}
           options={{
+            headerStyle: {
+              backgroundColor: 'rgb(23, 37, 84)',
+            },
+            headerTintColor: 'white',
+            headerTitleAlign: 'center',
+            tabBarActiveTintColor: 'rgb(255,255,255)',
             tabBarLabel: 'About',
+            tabBarStyle: {backgroundColor: 'rgb(23, 37, 84)'},
             tabBarIcon: ({color, size}) => (
               <MaterialCommunityIcons
                 name="account"
@@ -71,6 +79,5 @@ export default function MyTab() {
         />
       </Tab.Navigator>
     </Provider>
-    //</DataContext.Provider>
   );
 }
