@@ -4,8 +4,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {About_Page, Chart_Page, Home_Page} from './index';
 
-import store from '../Redux_Store/store';
-
 const Tab = createBottomTabNavigator();
 
 export default function MyTab() {

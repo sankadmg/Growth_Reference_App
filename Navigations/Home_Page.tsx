@@ -1,6 +1,6 @@
 import {SafeAreaView} from 'react-native';
 import React from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import {useSelector} from 'react-redux';
 import {RootState} from '../Redux_Store/store';
 
 import {
@@ -13,8 +13,7 @@ import {
 } from '../src/components/index';
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const {gender, months, bmi, height, weight} = useSelector(
+  const {gender, months, bmi, height} = useSelector(
     (state: RootState) => state.user,
   );
 
