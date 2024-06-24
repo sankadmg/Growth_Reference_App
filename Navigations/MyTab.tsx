@@ -2,17 +2,15 @@ import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-import {About, Chart, Home} from './index';
+import {About_Page, Chart_Page, Home_Page} from './index';
 
-import {Provider} from 'react-redux';
 import store from '../Redux_Store/store';
-import {AccessibilityInfo} from 'react-native';
 
 const Tab = createBottomTabNavigator();
 
 export default function MyTab() {
   return (
-    <Provider store={store}>
+    
       <Tab.Navigator
         initialRouteName="Home"
         screenOptions={{
@@ -20,7 +18,7 @@ export default function MyTab() {
         }}>
         <Tab.Screen
           name="BMI & Height Status For Age (5 -19)"
-          component={Home}
+          component={Home_Page}
           options={{
             headerStyle: {
               backgroundColor: 'rgb(23, 37, 84)',
@@ -37,7 +35,7 @@ export default function MyTab() {
         />
         <Tab.Screen
           name="Chart"
-          component={Chart}
+          component={Chart_Page}
           options={{
             headerStyle: {
               backgroundColor: 'rgb(23, 37, 84)',
@@ -58,7 +56,7 @@ export default function MyTab() {
         />
         <Tab.Screen
           name="About"
-          component={About}
+          component={About_Page}
           options={{
             headerStyle: {
               backgroundColor: 'rgb(23, 37, 84)',
@@ -78,6 +76,6 @@ export default function MyTab() {
           }}
         />
       </Tab.Navigator>
-    </Provider>
+    
   );
 }

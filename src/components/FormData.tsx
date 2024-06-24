@@ -13,17 +13,6 @@ import {
   setWeight,
 } from '../../Redux_Store/userSlice';
 
-// interface Props {
-//   gender: boolean;
-//   submitBMI: (
-//     bmi: number,
-//     hight: number,
-//     weight: number,
-//     months: number,
-//   ) => void;
-// }
-// {submitBMI, gender}: Props
-
 export default function FormData() {
   const dispatch = useDispatch();
   const {gender, months, bmi, height, weight} = useSelector(
@@ -62,7 +51,7 @@ export default function FormData() {
       parseFloat(values.height);
     const bmi = valueOfBmi * 10000;
     submitBMI(
-      bmi,
+      parseFloat(bmi.toFixed(1)),
       parseFloat(values.height),
       parseFloat(values.weight),
       numberOfMonths,
