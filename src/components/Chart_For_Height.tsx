@@ -1,5 +1,5 @@
 import {Dimensions, View} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
 
 import {
   VictoryArea,
@@ -10,39 +10,45 @@ import {
   VictoryTheme,
 } from 'victory-native';
 
-import Data from '../json/Data';
-import {RootState} from '../../Redux_Store/store';
-import {useSelector} from 'react-redux';
-const {height, width} = Dimensions.get('window');
+const {width} = Dimensions.get('window');
 
-export default function TestChart() {
-  const {gender, months, bmi, height, weight} = useSelector(
-    (state: RootState) => state.user,
-  );
+interface DataProps {
+  Month: number;
+  SD2neg: number;
+  SD2: number;
+}
 
+interface Porps {
+  gender: boolean;
+  months: number;
+  height: number;
+  data: DataProps[];
+}
+export default function Chart_For_BMI({gender, months, height, data}: Porps) {
   const handleBgColor = () => {
-    return gender ? '#FCE4EC' : '#E3F2FD';
+    return gender ? '#E3F2FD' : '#FCE4EC';
   };
-  const data = Data();
+
   return (
     <View
       style={{
         width: '98%',
-        height: 'auto',
+        height: 320,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: `${handleBgColor()}`,
         borderRadius: 18,
+        marginTop: 1,
       }}>
       <VictoryChart
         width={width + 10}
-        domain={{x: [61, 228], y: [10, 32]}}
+        domain={{x: [61, 228], y: [90, 200]}}
         theme={VictoryTheme.material}
-        style={{background: {fill: '#6a1b9a'}}}>
+        style={{background: {fill: '#EE82EE'}}}>
         <VictoryAxis label="Age in months" style={{axisLabel: {padding: 25}}} />
         <VictoryAxis
           dependentAxis
-          label="BMI"
+          label="Height"
           style={{axisLabel: {padding: 26}}}
         />
         <VictoryArea
@@ -55,21 +61,6 @@ export default function TestChart() {
           data={data}
           x="Month"
           y="SD2"
-          style={{
-            data: {stroke: '#c43a31', fill: '#EE82EE'},
-            parent: {border: '1px solid #ccc'},
-          }}
-        />
-        <VictoryArea
-          name="SD1"
-          interpolation="natural"
-          animate={{
-            duration: 1000,
-            onLoad: {duration: 1000},
-          }}
-          data={data}
-          x="Month"
-          y="SD1"
           style={{
             data: {stroke: '#c43a31', fill: '#66bb6a'},
             parent: {border: '1px solid #ccc'},
@@ -89,44 +80,30 @@ export default function TestChart() {
             data: {stroke: '#c43a31', fill: '#ef5350'},
             parent: {border: '1px solid #ccc'},
           }}
-          domain={{x: [61, 228], y: [10, 32]}}
-        />
-        <VictoryLabel
-          text="Obesity"
-          x={300}
-          y={70}
-          textAnchor="start"
-          style={{fill: 'white', fontSize: 12}}
-        />
-        <VictoryLabel
-          text="Overweight"
-          x={280}
-          y={105}
-          textAnchor="start"
-          style={{fill: 'white', fontSize: 12}}
+          domain={{x: [61, 228], y: [90, 200]}}
         />
         <VictoryLabel
           text="Normal"
-          x={300}
-          y={170}
+          x={305}
+          y={100}
           textAnchor="start"
           style={{fill: 'white', fontSize: 12}}
         />
         <VictoryLabel
-          text="Wasting"
-          x={296}
-          y={250}
+          text="Stunting"
+          x={300}
+          y={200}
           textAnchor="start"
           style={{fill: 'white', fontSize: 12}}
         />{' '}
         {/**/}
-        {months >= 61 && bmi >= 10 && (
+        {months >= 61 && height >= 10 && (
           <VictoryScatter
             size={3}
             data={[
               {
                 x: months,
-                y: bmi,
+                y: height,
               },
             ]}
             style={{
@@ -145,7 +122,7 @@ export default function TestChart() {
                 padding: 10,
               },
             }}
-            labels={({datum}) => `Months: ${datum.x} \nBMI: ${datum.y}`}
+            labels={({datum}) => `Months: ${datum.x} \nHeight: ${datum.y}`}
           />
         )}
       </VictoryChart>

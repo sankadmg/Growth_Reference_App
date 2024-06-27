@@ -4,12 +4,10 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../Redux_Store/store';
 
 import {
-  Header,
   SwitchGender,
   FormData,
   RowData,
   Results,
-  Footer,
 } from '../src/components/index';
 
 export default function Home() {

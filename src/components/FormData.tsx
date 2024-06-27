@@ -8,7 +8,6 @@ import {RootState} from '../../Redux_Store/store';
 import {
   setMonths,
   setBMI,
-  setGender,
   setHeight,
   setWeight,
 } from '../../Redux_Store/userSlice';
