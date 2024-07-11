@@ -1,19 +1,19 @@
 import {Switch, Text, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {setGender} from '../../Redux_Store/userSlice';
 
-import {useDispatch} from 'react-redux';
+import {useAppDispatch} from '../../Redux_Store/hooks';
 
 export default function SwitchGender() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [isEnabled, setIsEnabled] = useState(true);
 
-  const toggleSwitch = () => {
+  const toggleSwitch = useCallback(() => {
     setIsEnabled(previousState => !previousState);
     dispatch(setGender(isEnabled));
-  };
-
+  }, [isEnabled]);
+  // console.log('Switch Gender');
   return (
     <View className=" top-4 flex-row space-x-1">
       <Text className="border-r border-white w-48 text-center text-xl text-neutral-50">

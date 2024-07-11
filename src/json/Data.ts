@@ -1,7 +1,8 @@
 import {useEffect, useState} from 'react';
 import {Bbmi, Bhfa, Gbmi, Ghfa} from './index';
-import {RootState} from '../../Redux_Store/store';
-import {useSelector} from 'react-redux';
+
+import {selectGender} from '../../Redux_Store/selectors';
+import {useAppSelector} from '../../Redux_Store/hooks';
 
 interface DataPropBMI {
   Month: number;
@@ -10,54 +11,43 @@ interface DataPropBMI {
   SD2: number;
 }
 
-interface DataPropHeight {
-  Month: number;
-  SD2neg: number;
-  SD2: number;
-}
-//const {gender} = useSelector((state: RootState) => state.user);
-
-export function BMI_Data() {
-  const {gender} = useSelector((state: RootState) => state.user);
-  const [jsonData, setJsonData] = useState<DataPropBMI[]>([]);
-  useEffect(() => {
-    if (gender) {
-      setJsonData(Bbmi);
-    } else {
-      setJsonData(Gbmi);
-    }
-  }, [[], gender]);
-
-  return jsonData;
-}
-
-export function Height_Data() {
-  const {gender} = useSelector((state: RootState) => state.user);
-  const [jsonData, setJsonData] = useState<DataPropHeight[]>([]);
-  useEffect(() => {
-    if (gender) {
-      setJsonData(Bhfa);
-    } else {
-      setJsonData(Ghfa);
-    }
-  }, [[], gender]);
-
-  return jsonData;
-}
-// export function Height_Data_For_Boys() {
-//   const [jsonData, setJsonData] = useState<DataPropHeight[]>([]);
-//   useEffect(() => {
-//     setJsonData(Bhfa);
-//   }, []);
-
-//   return jsonData;
+// interface DataPropHeight {
+//   Month: number;
+//   SD2neg: number;
+//   SD2: number;
 // }
 
-// export function Height_Data_For_Girls() {
+export function BMI_Data() {
+  const gender = useAppSelector(selectGender);
+  const [jsonData, setJsonData] = useState<DataPropBMI[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (gender) {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        setJsonData(Bbmi);
+      } else {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        setJsonData(Gbmi);
+      }
+    };
+
+    fetchData();
+  }, [gender]);
+
+  return jsonData;
+}
+
+// export function Height_Data() {
+//   const gender = useAppSelector(selectGender);
 //   const [jsonData, setJsonData] = useState<DataPropHeight[]>([]);
 //   useEffect(() => {
-//     setJsonData(Ghfa);
-//   }, []);
+//     if (gender) {
+//       setJsonData(Bhfa);
+//     } else {
+//       setJsonData(Ghfa);
+//     }
+//   }, [[], gender]);
 
 //   return jsonData;
 // }

@@ -35,9 +35,12 @@ const userSlice = createSlice({
     setWeight(state, action: PayloadAction<number>) {
       state.weight = action.payload;
     },
+    updateUser(state, action: PayloadAction<Partial<UserState>>) {
+      Object.assign(state, action.payload);
+    },
   },
 });
 
-export const {setGender, setMonths, setBMI, setHeight, setWeight} =
+export const {setGender, setMonths, setBMI, setHeight, setWeight, updateUser} =
   userSlice.actions;
 export default userSlice.reducer;

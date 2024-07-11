@@ -1,22 +1,26 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {GestureResponderEvent, Text, TextInput, View} from 'react-native';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import Icon from './Icon';
-import {useDispatch, useSelector} from 'react-redux';
-import {RootState} from '../../Redux_Store/store';
+
+import {useAppDispatch} from '../../Redux_Store/hooks';
 import {
   setMonths,
   setBMI,
   setHeight,
   setWeight,
+  updateUser,
 } from '../../Redux_Store/userSlice';
 
-export default function FormData() {
-  const dispatch = useDispatch();
-  const {gender, months, bmi, height, weight} = useSelector(
-    (state: RootState) => state.user,
-  );
+interface Props {
+  gender: boolean;
+  //setData: () => void;
+}
+
+export default function FormData({gender}: Props) {
+  const dispatch = useAppDispatch();
+
   const initialValues = {
     age: '',
     height: '',
@@ -56,17 +60,25 @@ export default function FormData() {
       numberOfMonths,
     );
   }
-  function submitBMI(
-    bmi: number,
-    height: number,
-    weight: number,
-    months: number,
-  ) {
-    dispatch(setMonths(months));
-    dispatch(setBMI(bmi));
-    dispatch(setHeight(height));
-    dispatch(setWeight(weight));
-  }
+
+  // function submitBMI(
+  //   bmi: number,
+  //   height: number,
+  //   weight: number,
+  //   months: number,
+  // ) {
+  //   dispatch(setMonths(months));
+  //   dispatch(setBMI(bmi));
+  //   dispatch(setHeight(height));
+  //   dispatch(setWeight(weight));
+  // }
+  const submitBMI = useMemo(
+    () => (bmi: number, height: number, weight: number, months: number) => {
+      dispatch(updateUser({bmi, height, weight, months}));
+    },
+    [dispatch],
+  );
+  // console.log('Form Data');
   return (
     <Formik
       initialValues={initialValues}

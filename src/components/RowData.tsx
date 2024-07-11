@@ -1,13 +1,15 @@
 import {View, Text, Image} from 'react-native';
 import React from 'react';
-import {RootState} from '../../Redux_Store/store';
-import {useSelector} from 'react-redux';
 
-export default function RowData() {
-  const {gender, months, bmi, height, weight} = useSelector(
-    (state: RootState) => state.user,
-  );
+interface Props {
+  gender: boolean;
+  bmi: number;
+  months: number;
+  height: number;
+  weight: number;
+}
 
+export default function RowData({gender, bmi, months, height, weight}: Props) {
   const icon = gender
     ? require('../icons/chart_boy.png')
     : require('../icons/chart_girl.png');

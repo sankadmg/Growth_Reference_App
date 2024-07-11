@@ -1,18 +1,35 @@
-import {Text, View} from 'react-native';
-import React from 'react';
+import {View} from 'react-native';
+import React, {useEffect, useState} from 'react';
 
-import {useSelector} from 'react-redux';
-import {RootState} from '../Redux_Store/store';
+import D3Chart from '../src/components/D3Chart';
+import {useAppSelector} from '../Redux_Store/hooks';
+import {selectGender, selectBMI, selectMonths} from '../Redux_Store/selectors';
+import {Bbmi} from '../src/json';
 import Chart_For_BMI from '../src/components/Chart_For_BMI';
-import {BMI_Data, Height_Data} from '../src/json/Data';
-import Chart_For_Height from '../src/components/Chart_For_Height';
+
+interface DataPropBMI {
+  Month: number;
+  SD2neg: number;
+  SD1: number;
+  SD2: number;
+}
 
 export default function Chart_Page() {
-  const {gender, months, bmi, height} = useSelector(
-    (state: RootState) => state.user,
-  );
-  const dataFromBMI = BMI_Data();
-  const dataFromHeight = Height_Data();
+  const [bmi_data, setBmi_data] = useState<DataPropBMI[]>([]);
+  const gender = useAppSelector(selectGender);
+  const bmi = useAppSelector(selectBMI);
+  const months = useAppSelector(selectMonths);
+
+  useEffect(() => {
+    const data_from_json = async () => {
+      try {
+        setBmi_data(Bbmi);
+      } catch {
+        console.error(Error);
+      }
+    };
+    data_from_json();
+  }, [gender]);
 
   return (
     <View
@@ -26,14 +43,15 @@ export default function Chart_Page() {
         gender={gender}
         months={months}
         bmi={bmi}
-        data={dataFromBMI}
+        data={bmi_data}
       />
+      {/*
       <Chart_For_Height
         gender={gender}
         months={months}
         height={height}
         data={dataFromHeight}
-      />
+      /> */}
     </View>
   );
 }
